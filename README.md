@@ -26,11 +26,11 @@
 
 # 設計模式的類型
 
-- [創建型](#創建型設計模式)
-- [結構型](#結構型設計模式)
-- [行為型](#行為型設計模式)
+- [創建型](#創建型設計模式-creational-design-patterns)
+- [結構型](#結構型設計模式-structural-design-patterns)
+- [行為型](#行為型設計模式-behavioral-design-patterns)
 
-## 創建型設計模式 (Creational Design Patterns)<tag id="創建型設計模式" />
+## 創建型設計模式 (Creational Design Patterns)
 
 簡單來說：
 > 創建型設計模式主要用於如何實例化一個物件或一組相關的物件。
@@ -38,14 +38,14 @@
 **維基百科說：**
 > 在軟體工程中，創建型設計模式是用於處理物件創建的機制，試圖以最適合當下情境的方法來創建物件。物件創建的基本形式可能會造成設計問題，或是對整體設計增加額外的複雜度。創建型設計模式藉由某種方式來控制物件創建，以此解決前述的問題。
 
- * [簡單工廠模式](#簡單工廠模式)
- * [工廠方法模式](#-factory-method)
- * [抽象工廠模式](#-abstract-factory)
- * [生成器（建造者）模式](#-builder)
- * [原型模式](#-prototype)
- * [單例模式](#-singleton)
+ * [簡單工廠模式](#-簡單工廠模式-simple-factory)
+ * [工廠方法模式](#-工廠方法模式-factory-method)
+ * [抽象工廠模式](#-抽象工廠模式-abstract-factory)
+ * [生成器（建造者）模式](#-生成器（建造者）模式-builder)
+ * [原型模式](#-原型模式-prototype)
+ * [單例模式](#-單例模式-singleton)
 
-### 🏠 簡單工廠模式 (Simple Factory)<tag id="簡單工廠模式" />
+### 🏠 簡單工廠模式 (Simple Factory)
 --------------
 以現實生活為例：
 > 想像你正在蓋一棟房子，而現在你正需要幾扇門。你可以穿上工作服，帶上木頭、膠水、釘子和所有一切自造門所需的工具，然後開始幹活造門；或是你輕鬆地打通電話給工廠，讓他們把做好的門送過來，完全不需要先了解門如何製造，也不必經歷過程中的一切混亂。
@@ -116,7 +116,7 @@ $door2 = DoorFactory::makeDoor(50, 100);
 
 當創建一個物件的流程，並不只是賦值而是還包含一些邏輯時，此時將整個流程包裝在專門的工廠中，而非在專案裡四處重複相同的程式碼，就是該模式的一種適用情境。
 
-### 🏭 工廠方法模式 (Factory Method)<tag id="工廠方法模式" />
+### 🏭 工廠方法模式 (Factory Method)
 --------------
 
 以現實生活為例：
@@ -203,7 +203,7 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 
 對於那些在類別中，存在部分通用的處理流程，但實際需要的子類別必須透過運行時動態決定；或者說，當客戶端不清楚它需要哪個特定的子類別時。
 
-🔨 Abstract Factory
+### 🔨 抽象工廠模式 (Abstract Factory)
 ----------------
 
 Real world example
@@ -328,7 +328,7 @@ As you can see the wooden door factory has encapsulated the `carpenter` and the 
 
 When there are interrelated dependencies with not-that-simple creation logic involved
 
-👷 Builder
+### 👷 生成器（建造者）模式 (Builder)
 --------------------------------------------
 Real world example
 > Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
@@ -435,7 +435,7 @@ $burger = (new BurgerBuilder(14))
 
 When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
 
-🐑 Prototype
+### 🐑 原型模式 (Prototype)
 ------------
 Real world example
 > Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
@@ -504,7 +504,7 @@ Also you could use the magic method `__clone` to modify the cloning behavior.
 
 When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
 
-💍 Singleton
+### 💍 單例模式 (Singleton)
 ------------
 Real world example
 > There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
@@ -558,7 +558,7 @@ $president2 = President::getInstance();
 var_dump($president1 === $president2); // true
 ```
 
-Structural Design Patterns
+## 結構型設計模式 (Structural Design Patterns)
 ==========================
 In plain words
 > Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
@@ -1255,7 +1255,7 @@ $door->close(); // Closing lab door
 ```
 Yet another example would be some sort of data-mapper implementation. For example, I recently made an ODM (Object Data Mapper) for MongoDB using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call()`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
 
-Behavioral Design Patterns
+## 行為型設計模式 (Behavioral Design Patterns)
 ==========================
 
 In plain words
