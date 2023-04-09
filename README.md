@@ -12,8 +12,7 @@
 
 > 設計模式是針對頻繁出現的問題，該如何處理的準則。
 
-維基百科的敘述：
-
+**維基百科說：**
 > 在軟體工程的領域，設計模式是在給定情境下的軟體設計中，對於頻繁發生的問題，所衍生出的可複用解決方案的準則。它並不是能直接轉換成程式碼或機械碼的最終設計。而是一個解決問題的描述或模板，適用於各式不同的情境下。
 
 # ⚠️ 注意
@@ -27,40 +26,39 @@
 
 # 設計模式的類型
 
-- [Creational](#creational-design-patterns)
-- [Structural](#structural-design-patterns)
-- [Behavioral](#behavioral-design-patterns)
+- [創建型](#創建型設計模式)
+- [結構型](#結構型設計模式)
+- [行為型](#行為型設計模式)
 
-Creational Design Patterns
-==========================
+## 創建型設計模式 (Creational Design Patterns)<tag id="創建型設計模式" />
 
-In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
+簡單來說：
+> 創建型設計模式主要用於如何實例化一個物件或一組相關的物件。
 
-Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+**維基百科說：**
+> 在軟體工程中，創建型設計模式是用於處理物件創建的機制，試圖以最適合當下情境的方法來創建物件。物件創建的基本形式可能會造成設計問題，或是對整體設計增加額外的複雜度。創建型設計模式藉由某種方式來控制物件創建，以此解決前述的問題。
 
- * [Simple Factory](#-simple-factory)
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
+ * [簡單工廠模式](#簡單工廠模式)
+ * [工廠方法模式](#-factory-method)
+ * [抽象工廠模式](#-abstract-factory)
+ * [生成器（建造者）模式](#-builder)
+ * [原型模式](#-prototype)
+ * [單例模式](#-singleton)
 
-🏠 Simple Factory
+### 🏠 簡單工廠模式 (Simple Factory)<tag id="簡單工廠模式" />
 --------------
-Real world example
-> Consider, you are building a house and you need doors. You can either put on your carpenter clothes, bring some wood, glue, nails and all the tools required to build the door and start building it in your house or you can simply call the factory and get the built door delivered to you so that you don't need to learn anything about the door making or to deal with the mess that comes with making it.
+以現實生活為例：
+> 想像你正在蓋一棟房子，而現在你正需要幾扇門。你可以穿上工作服，帶上木頭、膠水、釘子和所有一切自造門所需的工具，然後開始幹活造門；或是你輕鬆地打通電話給工廠，讓他們把做好的門送過來，完全不需要先了解門如何製造，也不必經歷過程中的一切混亂。
 
-In plain words
-> Simple factory simply generates an instance for client without exposing any instantiation logic to the client
+簡單來說：
+> 簡單工廠模式只單純創建一個實例給使用者，而不需要暴露任何實例化過程中的邏輯。
 
-Wikipedia says
-> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
+**維基百科說：**
+> 在物件導向程式設計 (OOP) 中，工廠是用於創建其他物件的物件。正式一點說明，工廠是一個韓式，能藉由呼叫方法，回傳一個具有不同原型或類別的物件，而這個被呼叫的方法通常是 **`"new"`**。
 
-**Programmatic Example**
+**程式範例：**
 
-First of all we have a door interface and the implementation
+首先，我們有一個 `Door` 介面，實作如下：
 ```php
 interface Door
 {
@@ -90,7 +88,8 @@ class WoodenDoor implements Door
     }
 }
 ```
-Then we have our door factory that makes the door and returns it
+
+接著，我們實現 `DoorFactory`，用途是製造門並將其返回。
 ```php
 class DoorFactory
 {
@@ -100,7 +99,8 @@ class DoorFactory
     }
 }
 ```
-And then it can be used as
+
+最後，可以如下的方式使用：
 ```php
 // Make me a door of 100x200
 $door = DoorFactory::makeDoor(100, 200);
@@ -112,9 +112,9 @@ echo 'Height: ' . $door->getHeight();
 $door2 = DoorFactory::makeDoor(50, 100);
 ```
 
-**When to Use?**
+**何時使用？**
 
-When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
+當創建一個物件的流程，並不只是賦值而是還包含一些邏輯時，此時將整個流程包裝在專門的工廠中，而非在專案裡四處重複相同的程式碼，就是該模式的一種適用情境。
 
 🏭 Factory Method
 --------------
