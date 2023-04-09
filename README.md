@@ -1,44 +1,35 @@
 ![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
 
-***
+---
 
-<p align="center">
-🎉 Ultra-simplified explanation to design patterns! 🎉
-</p>
-<p align="center">
-A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
-</p>
+🎉 設計模式簡化版入門指南 🎉（該專案為 [`design-patterns-for-humans`](https://github.com/kamranahmedse/design-patterns-for-humans) 的繁中版，並加上個人見解以期提升吸收效率）
 
-***
+---
 
-<sub>Check out my [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
+# 介紹
 
-Introduction
-=================
+設計模式是對於頻繁出現的問題，所產生的解決方案。 **也是針對特定問題，該如何處理的準則。** 設計模式並非如函式庫、套件包等隨插即用的魔法工具；相反地，設計模式是對於特定情境下產生的特定問題，經過眾人嘗試各種解法後，概括出的準則。
 
-Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
+> 設計模式是針對頻繁出現的問題，該如何處理的準則。
 
-> Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
+維基百科的敘述：
 
-Wikipedia describes them as
+> 在軟體工程的領域，設計模式是在給定情境下的軟體設計中，對於頻繁發生的問題，所衍生出的可複用解決方案的準則。它並不是能直接轉換成程式碼或機械碼的最終設計。而是一個解決問題的描述或模板，適用於各式不同的情境下。
 
-> In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
+# ⚠️ 注意
 
-⚠️ Be Careful
------------------
-- Design patterns are not a silver bullet to all your problems.
-- Do not try to force them; bad things are supposed to happen, if done so. 
-- Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
-- If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
+- 設計模式並非能解決所有問題的萬靈丹。
+- 在不適合使用設計模式的情境下執意使用，會讓問題更嚴重。
+- 一定要記住，設計模式是用於**解決問題**，而非**找出問題**，切勿過度使用。
+- 在正確的情境下使用正確的設計模式，能受盡好處；相反，則會對程式碼帶來無盡災難。
 
-> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways.
+> 請注意，以下的程式碼範例，都是使用 PHP-7，但是這並不應該成為你學習的障礙，因為各個語言的核心概念皆是殊途同歸。
 
-Types of Design Patterns
------------------
+# 設計模式的類型
 
-* [Creational](#creational-design-patterns)
-* [Structural](#structural-design-patterns)
-* [Behavioral](#behavioral-design-patterns)
+- [Creational](#creational-design-patterns)
+- [Structural](#structural-design-patterns)
+- [Behavioral](#behavioral-design-patterns)
 
 Creational Design Patterns
 ==========================
