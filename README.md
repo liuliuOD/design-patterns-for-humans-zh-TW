@@ -51,7 +51,7 @@
 > 想像你正在蓋一棟房子，而現在你正需要幾扇門。你可以穿上工作服，帶上木頭、膠水、釘子和所有一切自造門所需的工具，然後開始幹活造門；或是你輕鬆地打通電話給工廠，讓他們把做好的門送過來，完全不需要先了解門如何製造，也不必經歷過程中的一切混亂。
 
 簡單來說：
-> 簡單工廠模式只單純創建一個實例給使用者，而不需要暴露任何實例化過程中的邏輯。
+> `簡單工廠模式`只單純創建一個實例給使用者，而不需要暴露任何實例化過程中的邏輯。
 
 **維基百科說：**
 > 在物件導向程式設計 (OOP) 中，工廠是用於創建其他物件的物件。正式一點說明，工廠是一個韓式，能藉由呼叫方法，回傳一個具有不同原型或類別的物件，而這個被呼叫的方法通常是 **`"new"`**。
@@ -89,7 +89,7 @@ class WoodenDoor implements Door
 }
 ```
 
-接著，我們實現 `DoorFactory`，用途是製造門並將其返回。
+接著，我們實現 `DoorFactory`，用途是創建 `WoodenDoor` 實例並將其返回。
 ```php
 class DoorFactory
 {
@@ -116,22 +116,21 @@ $door2 = DoorFactory::makeDoor(50, 100);
 
 當創建一個物件的流程，並不只是賦值而是還包含一些邏輯時，此時將整個流程包裝在專門的工廠中，而非在專案裡四處重複相同的程式碼，就是該模式的一種適用情境。
 
-🏭 Factory Method
+### 🏭 工廠方法模式 (Factory Method)<tag id="工廠方法模式" />
 --------------
 
-Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
+以現實生活為例：
+> 以招募經理的工作為例。不可能將所有職位的面試都交給同一個人執行。他必須根據開放的職位，將面試步驟交派給不同人。
 
-In plain words
-> It provides a way to delegate the instantiation logic to child classes.
+簡單來說：
+> `工廠方法模式`提供一種方法，將實例化的邏輯交派給子類別。
 
-Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+**維基百科說：**
+> 在基於類別的程式設計中，`工廠方法模式`是無需指定要創建物件的特定類別，而能處理創建對象的一種創建型設計模式。是藉由呼叫工廠方法來創建實例，而不需要調用建構函式 (constructor)。實際作法可以是提前在介面中指定並交由子類別實現；或是先在父類別（基礎類別）中實作，再由子類別（衍生類別）可選的決定是否要覆寫 (override)。
 
- **Programmatic Example**
+**程式範例**
 
-Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
-
+以我們上面提到的招募經理為例。首先，我們有一個 `Interviewer` 介面，實作如下：
 ```php
 interface Interviewer
 {
@@ -155,8 +154,7 @@ class CommunityExecutive implements Interviewer
 }
 ```
 
-Now let us create our `HiringManager`
-
+現在來創建我們的 `HiringManager` 類別：
 ```php
 abstract class HiringManager
 {
@@ -172,7 +170,8 @@ abstract class HiringManager
 }
 
 ```
-Now any child can extend it and provide the required interviewer
+
+現在任何子類別都可以藉由繼承 `HiringManager` 來回傳特定的 `Interviewer` 實例：
 ```php
 class DevelopmentManager extends HiringManager
 {
@@ -190,8 +189,8 @@ class MarketingManager extends HiringManager
     }
 }
 ```
-and then it can be used as
 
+最後，可以如下的方式使用：
 ```php
 $devManager = new DevelopmentManager();
 $devManager->takeInterview(); // Output: Asking about design patterns
@@ -200,9 +199,9 @@ $marketingManager = new MarketingManager();
 $marketingManager->takeInterview(); // Output: Asking about community building.
 ```
 
-**When to use?**
+**何時使用？**
 
-Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
+對於那些在類別中，存在部分通用的處理流程，但實際需要的子類別必須透過運行時動態決定；或者說，當客戶端不清楚它需要哪個特定的子類別時。
 
 🔨 Abstract Factory
 ----------------
