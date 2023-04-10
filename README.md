@@ -1288,22 +1288,21 @@ $door->close(); // Closing lab door
 * [狀態模式 (State)](#-狀態模式-state)
 * [模板方法模式 (Template Method)](#-模板方法模式-template-method)
 
-🔗 Chain of Responsibility
+### 🔗 責任鏈模式 (Chain of Responsibility)
 -----------------------
 
-Real world example
-> For example, you have three payment methods (`A`, `B` and `C`) setup in your account; each having a different amount in it. `A` has 100 USD, `B` has 300 USD and `C` having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
+以現實生活為例：
+> 舉例：你的帳戶設定了 3 種付款方式（A, B, C），每種方式都有不同金額。A 有 100 USD、B 有 300 USD、C 有 1000 USD，付款的優先度設置順序為 A -> B -> C。你試著購買 210 USD 的東西。在`責任鏈模式`下，首先 A 會被檢查是否足以付款，如果可以則付款成立且鏈被中斷。如果不行則請求會轉移到 B 並進行和 A 相同的流程，請求會持續被轉移，一直到找到適當的處理程序。在這裡 A, B, C 是鏈的連接，而且整個過程都是`責任鏈`。
 
-In plain words
-> It helps building a chain of objects. Request enters from one end and keeps going from object to object till it finds the suitable handler.
+簡單來說：
+> `責任鏈模式`能夠構建一個物件鏈。當請求進入鏈的其中一端時，會持續從一個物件轉移到下一個物件，直到找到適當的處理程序為止。
 
-Wikipedia says
-> In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle; the rest are passed to the next processing object in the chain.
+**維基百科說：**
+> 在物件導向設計中，`責任鏈模式`是一個包含命令物件的來源和一系列處理物件的設計模式。每一個處理物件包含定義它可以處理的命令物件類型的邏輯；剩下的命令物件則被傳遞給鏈中的下一個處理物件。
 
-**Programmatic Example**
+**程式範例**
 
-Translating our account example above. First of all we have a base account having the logic for chaining the accounts together and some accounts
-
+以我們上面的帳號為例。首先，我們有基本的 `Account` 類別，包含連接帳戶的邏輯，還有一些帳戶物件：
 ```php
 abstract class Account
 {
@@ -1364,8 +1363,7 @@ class Bitcoin extends Account
 }
 ```
 
-Now let's prepare the chain using the links defined above (i.e. Bank, Paypal, Bitcoin)
-
+現在，讓我們以上面定義的連接 (`Bank`, `Paypal`, `Bitcoin`) 來準備鏈：
 ```php
 // Let's prepare a chain like below
 //      $bank->$paypal->$bitcoin
