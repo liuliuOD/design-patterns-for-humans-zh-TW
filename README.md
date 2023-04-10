@@ -1389,22 +1389,22 @@ $bank->pay(259);
 // Paid 259 using Bitcoin!
 ```
 
-👮 Command
+### 👮 命令模式 (Command)
 -------
 
-Real world example
-> A generic example would be you ordering food at a restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook.
-> Another example would be you (i.e. `Client`) switching on (i.e. `Command`) the television (i.e. `Receiver`) using a remote control (`Invoker`).
+以現實生活為例：
+> 一個通用的例子是在餐廳裡點餐。你 (`Client`) 詢問服務生 (`Invoker`) 要帶走一些食物 (`Command`)，而服務生簡單地將請求轉達給主廚 (`Receiver`)，主廚知道要煮什麼以及怎麼煮。
+> 另一個例子是，你 (`Client`) 用遙控器 (`Invoker`) 打開 (`Command`) 電視 (`Receiver`)。
 
-In plain words
-> Allows you to encapsulate actions in objects. The key idea behind this pattern is to provide the means to decouple client from receiver.
+簡單來說：
+> 允許你將行為封裝在物件中。`命令模式`背後的關鍵概念，在於提供從`使用者 (Client)`到`接收者 (Receiver)``解耦合 (decouple)`的方式。
 
-Wikipedia says
-> In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
+**維基百科說：**
+> 在`物件導向程式 (OOP)`中，`命令模式`是一種`行為型設計模式`。其中一個物件被用於`封裝 (encapsulate)`執行操作，或是在之後觸發事件所需的所有資訊。這些資訊包含方法名稱、擁有該方法的物件和該方法參數的值。
 
-**Programmatic Example**
+**程式範例**
 
-First of all we have the receiver that has the implementation of every action that could be performed
+首先，我們有一個`接收者 (Receiver)`，負責實現可以執行的每個動作：
 ```php
 // Receiver
 class Bulb
@@ -1420,7 +1420,8 @@ class Bulb
     }
 }
 ```
-then we have an interface that each of the commands are going to implement and then we have a set of commands
+
+接著，我們有一個 `Command` 介面，每個命令都必須實作它，和一些命令的實作：
 ```php
 interface Command
 {
@@ -1480,7 +1481,8 @@ class TurnOff implements Command
     }
 }
 ```
-Then we have an `Invoker` with whom the client will interact to process any commands
+
+接下來，則是`調用者 (Invoker)`，`使用者 (Client)`將與其互動以處理任意`命令 (Command)`：
 ```php
 // Invoker
 class RemoteControl
@@ -1491,7 +1493,8 @@ class RemoteControl
     }
 }
 ```
-Finally let's see how we can use it in our client
+
+最後，來看看如何使用：
 ```php
 $bulb = new Bulb();
 
@@ -1503,7 +1506,7 @@ $remote->submit($turnOn); // Bulb has been lit!
 $remote->submit($turnOff); // Darkness!
 ```
 
-Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands.
+`命令模式`也可以被用於實作一個基於事務的系統。你可以在執行命令時保持歷史紀錄。如果最終命令執行成功，則一切正常；否則只要迭代歷史紀錄，並在所有已執行的命令上執行 `undo` 即可。
 
 ➿ Iterator
 --------
