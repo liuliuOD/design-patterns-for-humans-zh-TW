@@ -1271,22 +1271,22 @@ $door->close(); // Closing lab door
 ## 行為型設計模式 (Behavioral Design Patterns)
 ==========================
 
-In plain words
-> It is concerned with assignment of responsibilities between the objects. What makes them different from structural patterns is they don't just specify the structure but also outline the patterns for message passing/communication between them. Or in other words, they assist in answering "How to run a behavior in software component?"
+簡單來說：
+> `行為型設計模式`關注物件之間的責任分配。和`結構型設計模式`的差異點在於，`行為型設計模式`不只指定結構，也定義彼此間消息傳遞 / 溝通的模式。而另一種解釋是，它們協助回答「如何在軟體元件中運行一個行為？」這個問題。
 
-Wikipedia says
-> In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
+**維基百科說：**
+> 在軟體工程中，`行為型設計模式`是識別物件之間，常見通訊模式並實現這些模式的設計模式。通過這樣做，模式增加了執行這類通訊的靈活性。
 
-* [Chain of Responsibility](#-chain-of-responsibility)
-* [Command](#-command)
-* [Iterator](#-iterator)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Visitor](#-visitor)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
+* [責任鏈模式 (Chain of Responsibility)](#-責任鏈模式-chain-of-responsibility)
+* [命令模式 (Command)](#-命令模式-command)
+* [迭代器模式 (Iterator)](#-迭代器模式-iterator)
+* [中介者模式 (Mediator)](#-中介者模式-mediator)
+* [備忘錄模式 (Memento)](#-備忘錄模式-memento)
+* [觀察者模式 (Observer)](#-觀察者模式-observer)
+* [訪問者模式 (Visitor)](#-訪問者模式-visitor)
+* [策略模式 (Strategy)](#-策略模式-strategy)
+* [狀態模式 (State)](#-狀態模式-state)
+* [模板方法模式 (Template Method)](#-模板方法模式-template-method)
 
 🔗 Chain of Responsibility
 -----------------------
