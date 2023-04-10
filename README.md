@@ -1189,21 +1189,21 @@ $shop->serve();
 // Serving tea to table# 5
 ```
 
-🎱 Proxy
+### 🎱 代理模式 (Proxy)
 -------------------
-Real world example
-> Have you ever used an access card to go through a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. The door's main functionality is to open but there is a proxy added on top of it to add some functionality. Let me better explain it using the code example below.
 
-In plain words
-> Using the proxy pattern, a class represents the functionality of another class.
+以現實生活為例：
+> 你使用過門禁卡來開門嗎？有多種選項能達到開門這個目的，例如：可以使用門禁卡或是透過指紋解鎖來通過安全檢查。門的主要功能就是打開，但`代理`為其加上了一些功能。讓我用以下的程式碼範例來更好的解釋它。
 
-Wikipedia says
-> A proxy, in its most general form, is a class functioning as an interface to something else. A proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes. Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
+簡單來說：
+> 使用`代理模式`能讓一個類別代表另一個類別的功能。
 
-**Programmatic Example**
+**維基百科說：**
+> `代理模式`最常見的用途，是用於訪問其他介面的類別。`代理模式`是一個包裝器或是`中介 (agent)`物件，被使用者呼叫來訪問幕後提供服務的真實物件。使用`代理模式`，可以簡單地轉發到真實物件，或是能提供額外的邏輯。`代理模式`可以提供額外的功能，如：在真實物件上的操作是資源密集型時提供快取；或是對真實物件操作前，進行先決條件的確認。
 
-Taking our security door example from above. Firstly we have the door interface and an implementation of door
+**程式範例**
 
+以我們上面提到的安全門為例。首先，定義 `Door` 介面和實作 `LabDoor`：
 ```php
 interface Door
 {
@@ -1224,7 +1224,8 @@ class LabDoor implements Door
     }
 }
 ```
-Then we have a proxy to secure any doors that we want
+
+接著，我們有一個`代理`確保任意門的安全性：
 ```php
 class SecuredDoor implements Door
 {
@@ -1255,7 +1256,8 @@ class SecuredDoor implements Door
     }
 }
 ```
-And here is how it can be used
+
+接著，可以如下的方式使用：
 ```php
 $door = new SecuredDoor(new LabDoor());
 $door->open('invalid'); // Big no! It ain't possible.
@@ -1263,7 +1265,8 @@ $door->open('invalid'); // Big no! It ain't possible.
 $door->open('$ecr@t'); // Opening lab door
 $door->close(); // Closing lab door
 ```
-Yet another example would be some sort of data-mapper implementation. For example, I recently made an ODM (Object Data Mapper) for MongoDB using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call()`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
+
+另一個例子是`資料映射 (data-mapper)`的實現。比如：最近我使用該模式，為 MongoDB 實現一個`物件資料映射 (ODM)`，其中我使用到魔術方法 `__call()` 來編寫一個`代理`，其包裝了 mongo 類別的調用。所有方法調用都被`代理`到原始的 mongo 類別，而且檢索到的結果以原樣回傳，但是在 `find` 和 `findOne` 的情況下，資料被映射到所需的類別物件，而使回傳的物件並不是 `Cursor`。
 
 ## 行為型設計模式 (Behavioral Design Patterns)
 ==========================
