@@ -206,19 +206,18 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 ### 🔨 抽象工廠模式 (Abstract Factory)
 ----------------
 
-Real world example
-> Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
+以現實生活為例：
+> 擴展我們在`簡單工廠模式`的門範例。基於你的需求，你可以從木門店取得木門、鐵門店取得鐵門或是從對應的店取得塑膠門。另外，你也可能需要一個擁有不同類型專業能力的人來幫助安裝對應的門，例如：木門需要木匠、鐵門需要焊工等。你可以看到，當前門之間存在一種依賴關係，木門需要木匠、鐵門需要焊工等。
 
-In plain words
-> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
+簡單來說：
+> 一個集結複數工廠的工廠：將個別獨立但彼此之間存在關聯 / 相依性的工廠集結在一起的工廠，但不需要指定它們具體的類別。
 
-Wikipedia says
-> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+**維基百科說：**
+> `抽象工廠模式`提供一個方式，將複數個個別獨立卻又擁有共同主題的工廠封裝在一起，但不需要指定它們具體的類別。
 
-**Programmatic Example**
+**程式範例**
 
-Translating the door example above. First of all we have our `Door` interface and some implementation for it
-
+接下來將上面提到關於門的範例轉換為程式碼。首先我們定義一個 `Door` 介面並基於此進行實作。
 ```php
 interface Door
 {
@@ -241,8 +240,8 @@ class IronDoor implements Door
     }
 }
 ```
-Then we have some fitting experts for each door type
 
+接著，我們有適合每種門的安裝專家。
 ```php
 interface DoorFittingExpert
 {
@@ -266,7 +265,7 @@ class Carpenter implements DoorFittingExpert
 }
 ```
 
-Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
+現在，我們有能用於創建一系列相關物件的抽象工廠，例如：木門工廠會創建木門和木門的安裝專家、鐵門工廠會創建鐵門和鐵門的安裝專家。
 ```php
 interface DoorFactory
 {
@@ -302,7 +301,8 @@ class IronDoorFactory implements DoorFactory
     }
 }
 ```
-And then it can be used as
+
+最後，可以如下的方式使用：
 ```php
 $woodenFactory = new WoodenDoorFactory();
 
@@ -322,11 +322,11 @@ $door->getDescription();  // Output: I am an iron door
 $expert->getDescription(); // Output: I can only fit iron doors
 ```
 
-As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
+你可以看到 `WoodenDoorFactory` 封裝了 `Carpenter` 和 `WoodenDoor`，而 `IronDoorFactory` 則是封裝 `IronDoor` 和 `Welder`。因此能幫助我們確保每個創建的門，不會得到錯誤的安裝專家。
 
-**When to use?**
+**何時使用？**
 
-When there are interrelated dependencies with not-that-simple creation logic involved
+當存在相互關聯的依賴，且包含較複雜的創建邏輯時。
 
 ### 👷 生成器（建造者）模式 (Builder)
 --------------------------------------------
