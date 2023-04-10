@@ -902,23 +902,21 @@ $organization->addEmployee($jane);
 echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 27000
 ```
 
-☕ Decorator
+### ☕ 裝飾器（裝飾者）模式 (Decorator)
 -------------
 
-Real world example
+以現實生活為例：
+> 想像你經營一家提供多種服務的汽車服務商店。現在你怎麼計算要請款的帳單？你選擇一種服務，並動態加入所提供服務的價格，直到取得最終成本。在這裡每種服務都是一個`裝飾器`。
 
-> Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
+簡單來說：
+> `裝飾器模式`藉由將它們包裝到裝飾器類別的一個物件中，來讓你在運行時動態改變一個物件的行為。
 
-In plain words
-> Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
+**維基百科說：**
+> 在`物件導向程式設計 (OOP)`中，`裝飾器模式`是一個設計模式，允許行為被加入（靜態或動態地）到獨立的物件中，而不影響相同類別中其他不同物件的行為。`裝飾器模式`對於`單一責任定律 (Single Responsibility Principle)`很有用，它允許在具有唯一關注區域的類別間劃分功能。
 
-Wikipedia says
-> In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.
+**程式範例**
 
-**Programmatic Example**
-
-Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
-
+我們以咖啡作為範例。首先，我們有一個 `Coffee` 介面和一個實作該介面的 `SimpleCoffee` 類別：
 ```php
 interface Coffee
 {
@@ -939,7 +937,8 @@ class SimpleCoffee implements Coffee
     }
 }
 ```
-We want to make the code extensible to allow options to modify it if required. Lets make some add-ons (decorators)
+
+我們想讓程式碼具備可擴展性，以在需要時對其進行修改。接著，讓我們創建一些`裝飾器`：
 ```php
 class MilkCoffee implements Coffee
 {
@@ -1002,8 +1001,7 @@ class VanillaCoffee implements Coffee
 }
 ```
 
-Lets make a coffee now
-
+現在，來做杯咖啡吧：
 ```php
 $someCoffee = new SimpleCoffee();
 echo $someCoffee->getCost(); // 10
