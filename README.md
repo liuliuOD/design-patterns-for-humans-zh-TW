@@ -437,21 +437,21 @@ $burger = (new BurgerBuilder(14))
 
 ### 🐑 原型模式 (Prototype)
 ------------
-Real world example
-> Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
 
-In plain words
-> Create object based on an existing object through cloning.
+以現實生活為例：
+> 還記得 dolly 嗎？那隻被克隆的羊！我們不會深入細節，但關鍵點在於克隆。
 
-Wikipedia says
-> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+簡單來說：
+> 藉由克隆創建一個基於已存在實例的新實例。
 
-In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
+**維基百科說：**
+> `原型模式`是軟體開發中，`創建型設計模式`的一種。它被用在*新的*被創建物件的類型，取決於一個*已*創建的原型實例時。通過克隆原型實例來產生新對象。
 
-**Programmatic Example**
+簡單來說，`原型模式`讓你能創建一個已存在實例的`複製體`，並根據你的需求做修改，避免從頭開始創建實例和設定的過程中可能碰到的麻煩。
 
-In PHP, it can be easily done using `clone`
+**程式範例**
 
+在 PHP 中可以簡單地使用 `clone` 方法：
 ```php
 class Sheep
 {
@@ -485,7 +485,8 @@ class Sheep
     }
 }
 ```
-Then it can be cloned like below
+
+接著，可以如下的方式使用：
 ```php
 $original = new Sheep('Jolly');
 echo $original->getName(); // Jolly
@@ -498,11 +499,11 @@ echo $cloned->getName(); // Dolly
 echo $cloned->getCategory(); // Mountain sheep
 ```
 
-Also you could use the magic method `__clone` to modify the cloning behavior.
+你也能使用魔術方法 `__clone` 來改變克隆行為。
 
-**When to use?**
+**何時使用？**
 
-When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
+當需要一個和已存在實例相似的實例時，或是當創建的成本比起克隆更為昂貴時，就適用原型模式。
 
 ### 💍 單例模式 (Singleton)
 ------------
