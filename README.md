@@ -36,9 +36,9 @@
 
 # 設計模式的類型
 
-- [創建型](#創建型設計模式-creational-design-patterns)
-- [結構型](#結構型設計模式-structural-design-patterns)
-- [行為型](#行為型設計模式-behavioral-design-patterns)
+- [創建型 (Creational Design Patterns)](#創建型設計模式-creational-design-patterns)
+- [結構型 (Structural Design Patterns)](#結構型設計模式-structural-design-patterns)
+- [行為型 (Behavioral Design Patterns)](#行為型設計模式-behavioral-design-patterns)
 
 ## 創建型設計模式 (Creational Design Patterns)
 
@@ -48,12 +48,12 @@
 **維基百科說：**
 > 在軟體工程中，創建型設計模式是用於處理物件創建的機制，試圖以最適合當下情境的方法來創建物件。物件創建的基本形式可能會造成設計問題，或是對整體設計增加額外的複雜度。創建型設計模式藉由某種方式來控制物件創建，以此解決前述的問題。
 
- * [簡單工廠模式](#-簡單工廠模式-simple-factory)
- * [工廠方法模式](#-工廠方法模式-factory-method)
- * [抽象工廠模式](#-抽象工廠模式-abstract-factory)
- * [生成器（建造者）模式](#-生成器（建造者）模式-builder)
- * [原型模式](#-原型模式-prototype)
- * [單例模式](#-單例模式-singleton)
+* [簡單工廠模式 (Simple Factory)](#-簡單工廠模式-simple-factory)
+* [工廠方法模式 (Factory Method)](#-工廠方法模式-factory-method)
+* [抽象工廠模式 (Abstract Factory)](#-抽象工廠模式-abstract-factory)
+* [生成器（建造者）模式 (Builder)](#-生成器（建造者）模式-builder)
+* [原型模式 (Prototype)](#-原型模式-prototype)
+* [單例模式 (Singleton)](#-單例模式-singleton)
 
 ### 🏠 簡單工廠模式 (Simple Factory)
 --------------
@@ -64,7 +64,7 @@
 > `簡單工廠模式`只單純創建一個實例給使用者，而不需要暴露任何實例化過程中的邏輯。
 
 **維基百科說：**
-> 在`物件導向程式設計 (OOP)` 中，工廠是用於創建其他物件的物件。正式一點說明，工廠是一個韓式，能藉由呼叫方法，回傳一個具有不同原型或類別的物件，而這個被呼叫的方法通常是 **`"new"`**。
+> 在`物件導向程式設計 (OOP)`中，工廠是用於創建其他物件的物件。正式一點說明，工廠是一個韓式，能藉由呼叫方法，回傳一個具有不同原型或類別的物件，而這個被呼叫的方法通常是 **`"new"`**。
 
 **程式範例：**
 
