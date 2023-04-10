@@ -14,6 +14,7 @@
 |類別|class|
 |方法|method|
 |函式、函數|function|
+|模擬|mock|
 
 # 介紹
 
@@ -516,20 +517,21 @@ echo $cloned->getCategory(); // Mountain sheep
 
 ### 💍 單例模式 (Singleton)
 ------------
-Real world example
-> There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
 
-In plain words
-> Ensures that only one object of a particular class is ever created.
+以現實生活為例：
+> 一個國家同時只能有一個總統。任何行動都是由同一個總統進行。在這裡總統就是一個`單例模式`。
 
-Wikipedia says
-> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+簡單來說：
+> 確保一個特定類別的物件，只有被創建一次。
 
-Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus mocking the singleton could be difficult.
+**維基百科說：**
+> 在軟體工程中，`單例模式`是將一個類別的實例化，限制為同一個物件的軟體設計模式。尤其適用於需要`只有一個物件`來協調整個系統操作時。
 
-**Programmatic Example**
+`單例模式`事實上被視為一個`反模式 (anti-pattern)`，應該避免過度使用它。它不一定是壞的，也有一些有效地使用案例，但應該被小心使用，因為其在你的應用中引入一個全域狀態，造成對單例進行改動時，可能意外的影響其他區塊，並帶來除錯上的困難。其它缺點則在於會讓程式`過度耦合 (coupled)`，讓`模擬 (mock)` 單例時遭遇困難。
 
-To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
+**程式範例**
+
+要創建單例，必須將建構函式設為私有、禁止克隆、禁止擴展，並創建一個`靜態變數 (static variable)`來保存實例：
 ```php
 final class President
 {
@@ -560,7 +562,8 @@ final class President
     }
 }
 ```
-Then in order to use
+
+接著，可以如下的方式使用：
 ```php
 $president1 = President::getInstance();
 $president2 = President::getInstance();
