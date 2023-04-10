@@ -1020,22 +1020,21 @@ echo $someCoffee->getCost(); // 20
 echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ```
 
-📦 Facade
+### 📦 外觀模式 (Facade)
 ----------------
 
-Real world example
-> How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
+以現實生活為例：
+> 你怎麼讓電腦開機？你可能會說：「按下電源鍵！」。這只是電腦對外提供的一個簡單介面，而對內電腦實際上需要做一大堆事情來達到目的。這個簡單介面（電源鍵）和複雜子系統（內部的開機流程）之間的聯繫就是`外觀模式`。
 
-In plain words
-> Facade pattern provides a simplified interface to a complex subsystem.
+簡單來說：
+> `外觀模式`為複雜的子系統提供了一個簡單的介面。
 
-Wikipedia says
-> A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
+**維基百科說：**
+> `外觀模式`提供一個簡單的介面，用於操作一個更大型的程式碼，如：函式庫。
 
-**Programmatic Example**
+**程式範例**
 
-Taking our computer example from above. Here we have the computer class
-
+以我們上面提到的電腦為例。首先，需要實作 `Computer` 類別：
 ```php
 class Computer
 {
@@ -1075,7 +1074,8 @@ class Computer
     }
 }
 ```
-Here we have the facade
+
+接著創建 `ComputerFacade`：
 ```php
 class ComputerFacade
 {
@@ -1102,7 +1102,8 @@ class ComputerFacade
     }
 }
 ```
-Now to use the facade
+
+接著，可以如下的方式使用：
 ```php
 $computer = new ComputerFacade(new Computer());
 $computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
