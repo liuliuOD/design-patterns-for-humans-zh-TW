@@ -1110,22 +1110,21 @@ $computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
 $computer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ```
 
-🍃 Flyweight
+### 🍃 輕量（享元）模式 (Flyweight)
 ---------
 
-Real world example
-> Did you ever have fresh tea from some stall? They often make more than one cup that you demanded and save the rest for any other customer so to save the resources e.g. gas etc. Flyweight pattern is all about that i.e. sharing.
+以現實生活為例：
+> 你曾經在路邊攤買過手搖飲嗎？他們通常會做比你點的量更多的茶，然後把剩下的留給其他顧客，以節省資源，如：瓦斯。`輕量模式`就是關於共享的一種實現。
 
-In plain words
-> It is used to minimize memory usage or computational expenses by sharing as much as possible with similar objects.
+簡單來說：
+> `輕量模式`就是透過與類似物件，盡可能共用最多內容，來達到最小化記憶體用量和計算花費。
 
-Wikipedia says
-> In computer programming, flyweight is a software design pattern. A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects; it is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory.
+**維基百科說：**
+> 在電腦編程中，`輕量模式`是一個軟體設計模式。`輕量模式`是一種最小化記憶體用量的物件，藉由和其他相似物件盡可能多的共用資料，以在大量使用物件時節省記憶體。當簡單的重複操作，會累積使用到超過允許的記憶體總量時，這是一個使用大量物件的方式。
 
-**Programmatic example**
+**程式範例**
 
-Translating our tea example from above. First of all we have tea types and tea maker
-
+以上面提到的茶為例子。首先，我們要實作 `KarakTea` 和 `TeaMaker`：
 ```php
 // Anything that will be cached is flyweight.
 // Types of tea here will be flyweights.
@@ -1149,8 +1148,7 @@ class TeaMaker
 }
 ```
 
-Then we have the `TeaShop` which takes orders and serves them
-
+接下來，我們實作一個負責接受訂單和提供服務的 `TeaShop` 類別：
 ```php
 class TeaShop
 {
@@ -1175,8 +1173,8 @@ class TeaShop
     }
 }
 ```
-And it can be used as below
 
+接著，可以如下的方式使用：
 ```php
 $teaMaker = new TeaMaker();
 $shop = new TeaShop($teaMaker);
