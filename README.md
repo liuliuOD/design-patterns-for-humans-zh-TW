@@ -573,19 +573,20 @@ var_dump($president1 === $president2); // true
 
 ## 結構型設計模式 (Structural Design Patterns)
 ==========================
-In plain words
-> Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
 
-Wikipedia says
-> In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
+簡單來說：
+> `結構型設計模式`主要關注於`物件複合 (object composition)`，或者說是`實體 (entity)`間如何相互使用。而另一種解釋是，它們解決的是「如何構建軟體元件？」這個問題。
 
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+**維基百科說：**
+> 在軟體工程中，`結構型設計模式`是通過確定`實體 (entity)`間關聯性的簡單方式，來簡化設計的一類設計模式。
+
+* [轉接器（適配器）模式 (Adapter)](#-轉接器（適配器）模式-adapter)
+* [橋接模式 (Bridge)](#-橋接模式-bridge)
+* [組合模式 (Composite)](#-組合模式-composite)
+* [裝飾器（裝飾者）模式 (Decorator)](#-裝飾器（裝飾者）模式-decorator)
+* [外觀模式 (Facade)](#-外觀模式-facade)
+* [輕量（享元）模式 (Flyweight)](#-輕量（享元）模式-flyweight)
+* [代理模式 (Proxy)](#-代理模式-proxy)
 
 🔌 Adapter
 -------
