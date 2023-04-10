@@ -772,22 +772,21 @@ echo $about->getContent(); // "About page in Dark Black";
 echo $careers->getContent(); // "Careers page in Dark Black";
 ```
 
-🌿 Composite
+### 🌿 組合模式 (Composite)
 -----------------
 
-Real world example
-> Every organization is composed of employees. Each of the employees has the same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
+以現實生活為例：
+> 每個組織都是由員工組成。員工各自又有相同特性，如：有薪水、有特定責任、可能需要 / 不需要對某人匯報、有 / 沒有下屬等。
 
-In plain words
-> Composite pattern lets clients treat the individual objects in a uniform manner.
+簡單來說：
+> `組合模式`讓使用者用統一的方法對待各自獨立的物件。
 
-Wikipedia says
-> In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly.
+**維基百科說：**
+> 在軟體工程中，`組合模式`是一個分區設計模式。`組合模式`描述一組物件被視為一個物件的實例。組合的目的是將物件組合成樹狀結構，以表示`單一和群體階層 (part-whole hierarchies)`。實作`組合模式`能讓使用者統一處理單個物件和組合物件。
 
-**Programmatic Example**
+**程式範例**
 
-Taking our employees example from above. Here we have different employee types
-
+以上面提到的員工為例。我們有不同的員工類型：
 ```php
 interface Employee
 {
@@ -865,8 +864,7 @@ class Designer implements Employee
 }
 ```
 
-Then we have an organization which consists of several different types of employees
-
+接著，我們有一個包含多種不同類型員工的組織：
 ```php
 class Organization
 {
@@ -890,8 +888,7 @@ class Organization
 }
 ```
 
-And then it can be used as
-
+接著，可以如下的方式使用：
 ```php
 // Prepare the employees
 $john = new Developer('John Doe', 12000);
