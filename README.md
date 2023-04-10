@@ -588,25 +588,25 @@ var_dump($president1 === $president2); // true
 * [輕量（享元）模式 (Flyweight)](#-輕量（享元）模式-flyweight)
 * [代理模式 (Proxy)](#-代理模式-proxy)
 
-🔌 Adapter
+### 🔌 轉接器（適配器）模式 (Adapter)
 -------
-Real world example
-> Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
-> Another example would be the famous power adapter; a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
-> Yet another example would be a translator translating words spoken by one person to another
 
-In plain words
-> Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
+以現實生活為例：
+> 假設你的記憶卡裡有一些照片，現在你需要將它們傳輸到電腦裡。為了傳輸照片，你需要某種轉接器來連接記憶卡和電腦。在這個例子中，讀卡機就是一個轉接器。
+> 另一個例子是電源轉接器，三孔的插頭無法使用兩孔的插座，需要使用電源轉接器讓兩者相容。
+> 再一個例子則是翻譯員，將一個人說的話翻譯給另一個人。
 
-Wikipedia says
-> In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
+簡單來說：
+> `轉接器模式`讓你用轉接器包裝一個本來不兼容的物件，使其兼容於另一個類別。
 
-**Programmatic Example**
+**維基百科說：**
+> 在軟體工程中，`轉接器模式`是一種允許使用已存在類別的介面，作為另一個類別介面的軟體設計模式。常被用於使已存在的類別兼容其他類別，而不需要改動原始碼。
 
-Consider a game where there is a hunter and he hunts lions.
+**程式範例**
 
-First we have an interface `Lion` that all types of lions have to implement
+假設有一個遊戲，其中有一個狩獵獅子的獵人。
 
+首先，我們有一個 `Lion` 介面，所有類型的獅子都必須實作它：
 ```php
 interface Lion
 {
@@ -627,7 +627,8 @@ class AsianLion implements Lion
     }
 }
 ```
-And hunter expects any implementation of `Lion` interface to hunt.
+
+而 `Hunter` 的 `hunt` 函式，預期傳入的參數都要實作 `Lion` 介面：
 ```php
 class Hunter
 {
@@ -638,8 +639,7 @@ class Hunter
 }
 ```
 
-Now let's say we have to add a `WildDog` in our game so that hunter can hunt that also. But we can't do that directly because dog has a different interface. To make it compatible for our hunter, we will have to create an adapter that is compatible
-
+現在我們要在遊戲中加入一個 `WildDog`，讓獵人除了獅子也可以狩獵它。但是我們不能直接這樣做，因為野狗有一個不同的介面。為了讓其兼容我們的獵人，必須創建一個兼容的轉接器：
 ```php
 // This needs to be added to the game
 class WildDog
@@ -665,8 +665,8 @@ class WildDogAdapter implements Lion
     }
 }
 ```
-And now the `WildDog` can be used in our game using `WildDogAdapter`.
 
+現在 `WildDog` 可以透過 `WildDogAdapter` 被我們的遊戲使用：
 ```php
 $wildDog = new WildDog();
 $wildDogAdapter = new WildDogAdapter($wildDog);
