@@ -54,7 +54,7 @@
 > `簡單工廠模式`只單純創建一個實例給使用者，而不需要暴露任何實例化過程中的邏輯。
 
 **維基百科說：**
-> 在物件導向程式設計 (OOP) 中，工廠是用於創建其他物件的物件。正式一點說明，工廠是一個韓式，能藉由呼叫方法，回傳一個具有不同原型或類別的物件，而這個被呼叫的方法通常是 **`"new"`**。
+> 在`物件導向程式設計 (OOP)` 中，工廠是用於創建其他物件的物件。正式一點說明，工廠是一個韓式，能藉由呼叫方法，回傳一個具有不同原型或類別的物件，而這個被呼叫的方法通常是 **`"new"`**。
 
 **程式範例：**
 
@@ -126,7 +126,7 @@ $door2 = DoorFactory::makeDoor(50, 100);
 > `工廠方法模式`提供一種方法，將實例化的邏輯交派給子類別。
 
 **維基百科說：**
-> 在基於類別的程式設計中，`工廠方法模式`是無需指定要創建物件的特定類別，而能處理創建對象的一種創建型設計模式。是藉由呼叫工廠方法來創建實例，而不需要調用建構函式 (constructor)。實際作法可以是提前在介面中指定並交由子類別實現；或是先在父類別（基礎類別）中實作，再由子類別（衍生類別）可選的決定是否要覆寫 (override)。
+> 在基於類別的程式設計中，`工廠方法模式`是無需指定要創建物件的特定類別，而能處理創建對象的一種創建型設計模式。是藉由呼叫工廠方法來創建實例，而不需要調用`建構函式 (constructor)`。實際作法可以是提前在介面中指定並交由子類別實現；或是先在`父類別（基礎類別）`中實作，再由`子類別（衍生類別）`可選的決定是否要`覆寫 (override)`。
 
 **程式範例**
 
@@ -330,29 +330,30 @@ $expert->getDescription(); // Output: I can only fit iron doors
 
 ### 👷 生成器（建造者）模式 (Builder)
 --------------------------------------------
-Real world example
-> Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
 
-In plain words
-> Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+以現實生活為例：
+> 想像你正在 Hardee 的餐廳，而且點了一份名為「Big Hardee」的特別餐，而店員*沒有問任何問題*就正確地將餐點送上桌，這就是一個`簡單工廠模式`的範例。但是某些情況下，創建邏輯中可能包含更多步驟。例如：你想要一份客製化的 Subway 套餐，可以選擇麵包的種類、你喜歡的醬汁類型、起司種類等。此時就輪到`生成器模式`出場了。
 
-Wikipedia says
-> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
+簡單來說：
+> `生成器模式`允許你在避免`建構函式 (constructor)` 污染的情況下創建一個物件的不同變體。當一個物件存在多種變體，或是創建物件包含許多的步驟時，特別適用。
 
-Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
+**維基百科說：**
+> `生成器模式`是一種物件創建的軟體設計模式，目的在解決`伸縮建構子反模式 (telescoping constructor anti-pattern)` 問題。
 
+補充說明：什麼是`伸縮建構子`？
+
+我們都曾經看過如下範例的建構函式：
 ```php
 public function __construct($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce = true)
 {
 }
 ```
 
-As you can see; the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
+你可以看到建構函式的參數數量，可以很輕易超過一手之數，並且變得難以理解參數的使用範圍。再加上這個參數列表，會在你未來想增加更多可選項時，持續成長。而這就是`伸縮建構子`問題。
 
-**Programmatic Example**
+**程式範例**
 
-The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
-
+理智的替代方案就是使用`生成器模式`。首先，我們實做 `Burger`：
 ```php
 class Burger
 {
@@ -374,8 +375,7 @@ class Burger
 }
 ```
 
-And then we have the builder
-
+接下來，輪到`生成器`：
 ```php
 class BurgerBuilder
 {
@@ -421,8 +421,8 @@ class BurgerBuilder
     }
 }
 ```
-And then it can be used as:
 
+最後，可以如下的方式使用：
 ```php
 $burger = (new BurgerBuilder(14))
                     ->addPepperoni()
@@ -431,9 +431,9 @@ $burger = (new BurgerBuilder(14))
                     ->build();
 ```
 
-**When to use?**
+**何時使用？**
 
-When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
+當一個物件可能有多種變體，而且要避免`伸縮建構子`問題時，可以使用`生成器模式`。和`工廠模式`的主要差異在於：`工廠模式`適用於創建步驟只有一個時；`生成器模式`則適合多個創建步驟時使用。
 
 ### 🐑 原型模式 (Prototype)
 ------------
