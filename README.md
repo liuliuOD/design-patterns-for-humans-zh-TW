@@ -2083,24 +2083,24 @@ $sorter = new Sorter(new QuickSortStrategy());
 $sorter->sort($dataset); // Output : Sorting using quick sort
 ```
 
-💢 State
+### 💢 狀態模式 (State)
 -----
-Real world example
-> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
 
-In plain words
-> It lets you change the behavior of a class when the state changes.
+以現實生活為例：
+> 想像你正在使用某個繪畫應用程式，你選擇畫筆來開始畫畫。現在，畫筆會基於選擇的顏色改變行為，如：你選擇紅色，它就畫出紅色；若選擇藍色，則畫出藍色等。
 
-Wikipedia says
-> The state pattern is a behavioral software design pattern that implements a state machine in an object-oriented way. With the state pattern, a state machine is implemented by implementing each individual state as a derived class of the state pattern interface, and implementing state transitions by invoking methods defined by the pattern's superclass.
-> The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface.
+簡單來說：
+> `狀態模式`讓你能在狀態改變時改變一個類別的行為。
 
-**Programmatic example**
+**維基百科說：**
+> `狀態模式`是一種`行為型軟體設計模式`，以`物件導向`的方式實做一個狀態機。在`狀態模式`中，透過將每個獨立的狀態實作為`狀態模式`介面的`子類別 (derived class)`，並透過`調用 (invoke)`由模式的父類別所定義的方法，來實現狀態轉換。
+> `狀態模式`可以被解釋為一種`策略模式`，可以藉由調用被定義在模式介面中的方法，來切換當前的策略。
 
-Let's take an example of text editor, it lets you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
+**程式範例**
 
-First of all we have our state interface and some state implementations
+我們以文字編輯器為例，它讓你能改變輸入的文字狀態，如：你選擇了粗體，則接下來輸入的字將會變成粗體格式，若選擇斜體，則輸入變成斜體格式等。
 
+首先，我們有 `WritingState` 介面和一些狀態的實作：
 ```php
 interface WritingState
 {
@@ -2131,7 +2131,8 @@ class DefaultText implements WritingState
     }
 }
 ```
-Then we have our editor
+
+之後則是編輯器：
 ```php
 class TextEditor
 {
@@ -2153,7 +2154,8 @@ class TextEditor
     }
 }
 ```
-And then it can be used as
+
+接著，可以如下的方式使用：
 ```php
 $editor = new TextEditor(new DefaultText());
 
