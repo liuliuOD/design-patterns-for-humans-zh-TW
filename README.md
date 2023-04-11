@@ -1687,25 +1687,25 @@ $jane->send('Hey!');
 // Feb 14, 10:58 [Jane]: Hey!
 ```
 
-💾 Memento
+### 💾 備忘錄模式 (Memento)
 -------
-Real world example
-> Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker).
 
-In plain words
-> Memento pattern is about capturing and storing the current state of an object in a manner that it can be restored later on in a smooth manner.
+以現實生活為例：
+> 以計算機 (`Originator`)為例，當你進行一些計算後，上一個計算結果會被存在記憶體 (`Memento`)中，讓你可以取得結果，或是透過一些操作按鍵 (`Caretaker`)，將狀態恢復。
 
-Wikipedia says
-> The memento pattern is a software design pattern that provides the ability to restore an object to its previous state (undo via rollback).
+簡單來說：
+> `備忘錄模式`是獲取和儲存物件當前狀態，以便後續能順利恢復狀態的一種方法。
 
-Usually useful when you need to provide some sort of undo functionality.
+**維基百科說：**
+> `備忘錄模式`是一種軟體設計模式，它提供物件恢復到先前狀態的能力（透過`回滾 (rollback)`做到`撤銷 (undo)`）。
 
-**Programmatic Example**
+通常在你需要提供某些`撤銷`功能時很有用處。
 
-Lets take an example of text editor which keeps saving the state from time to time and that you can restore if you want.
+**程式範例**
 
-First of all we have our memento object that will be able to hold the editor state
+以文字編輯器作為範例，它會定期保存工作狀態，讓你在需要時可以將狀態恢復到某個特定時間點。
 
+首先，我們實作一個 `EditorMemento` 類別，能夠保存編輯器狀態：
 ```php
 class EditorMemento
 {
@@ -1723,8 +1723,7 @@ class EditorMemento
 }
 ```
 
-Then we have our editor i.e. originator that is going to use memento object
-
+接著，實作 `Editor` 類別 (Originator)，它將會使用 `EditorMemento` (Memento) 物件：
 ```php
 class Editor
 {
@@ -1752,8 +1751,7 @@ class Editor
 }
 ```
 
-And then it can be used as
-
+接著，可以如下的方式使用：
 ```php
 $editor = new Editor();
 
