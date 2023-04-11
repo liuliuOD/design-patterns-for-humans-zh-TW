@@ -2010,22 +2010,21 @@ $dolphin->accept($speak);  // Tuut tutt tuutt!
 $dolphin->accept($jump);   // Walked on water a little and disappeared
 ```
 
-💡 Strategy
+### 💡 策略模式 (Strategy)
 --------
 
-Real world example
-> Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
+以現實生活為例：
+> 以排序為例，我們一開始實作`泡沫排序 (bubble sort)`，但隨著資料量增加造成排序速度越來越慢。為了解決這個問題，我們決定改為實現`快速排序 (quick sort)`。但現在雖然在大量資料集的情況下，`快速排序`演算法的表現很好，一但碰到小型資料集，就會出現很慢的情況。為了處理這個問題，我們實作了一個策略：對於小資料集，使用`泡沫排序`；而對於大資料集，則使用`快速排序`。
 
-In plain words
-> Strategy pattern allows you to switch the algorithm or strategy based upon the situation.
+簡單來說：
+> `策略模式`允許你根據不同情境，切換演算法或是策略。
 
-Wikipedia says
-> In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
+**維基百科說：**
+> 在電腦程式設計中，`策略模式`是一種行為型軟體設計模式，它允許一個演算法的行為，能在執行時被動態選擇。
 
-**Programmatic example**
+**程式範例**
 
-Translating our example from above. First of all we have our strategy interface and different strategy implementations
-
+以我們上面提到的情境為例。首先，我們有 `SortStrategy` 介面和不同策略的實作：
 ```php
 interface SortStrategy
 {
@@ -2055,7 +2054,7 @@ class QuickSortStrategy implements SortStrategy
 }
 ```
 
-And then we have our client that is going to use any strategy
+然後，是我們的`客戶端`，它將能使用任意策略：
 ```php
 class Sorter
 {
@@ -2072,7 +2071,8 @@ class Sorter
     }
 }
 ```
-And it can be used as
+
+接著，可以如下的方式使用：
 ```php
 $dataset = [1, 5, 4, 3, 2, 8];
 
