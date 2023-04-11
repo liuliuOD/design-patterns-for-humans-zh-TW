@@ -2179,29 +2179,29 @@ $editor->type('Fifth line');
 // fifth line
 ```
 
-📒 Template Method
+### 📒 模板方法模式 (Template Method)
 ---------------
 
-Real world example
-> Suppose we are getting some house built. The steps for building might look like
-> - Prepare the base of house
-> - Build the walls
-> - Add roof
-> - Add other floors
+以現實生活為例：
+> 假如我們正在蓋一棟房子，建造的步驟可能像這樣：
+> - 準備房子的地基
+> - 蓋牆壁
+> - 加上屋頂
+> - 加上其他樓層
 
-> The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
+> 這些步驟的順序將永遠不能被改變，如：你不可能在建好牆壁之前蓋屋頂等，但每個步驟都能夠被修改，例如：牆壁的材質可以改成木頭、聚酯纖維或是石頭。
 
-In plain words
-> Template method defines the skeleton of how a certain algorithm could be performed, but defers the implementation of those steps to the children classes.
+簡單來說：
+> `模板方法模式`定義了一個演算法被實現的骨架，但是將具體步驟的實作推延到子類別中。
 
-Wikipedia says
-> In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
+**維基百科說：**
+> 在軟體工程中，`模板方法模式`是一種`行為型設計模式`，它在一個操作中定義了演算法的程式骨架，並推延某些步驟到子類別中。它允許重新定義演算法中的某些步驟，而不需要改變演算法的結構。
 
-**Programmatic Example**
+**程式範例**
 
-Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc) and deploy our app on the test server.
+假如我們有一個構建工具，能協助我們測試、錯誤檢測、構建、產生構建報告，如：程式碼覆蓋率報告、錯誤檢測報告等，並在測試伺服器上部署我們的服務。
 
-First of all we have our base class that specifies the skeleton for the build algorithm
+首先，我們有 `Builder` 類別，指定要構建演算法的骨架：
 ```php
 abstract class Builder
 {
@@ -2222,8 +2222,7 @@ abstract class Builder
 }
 ```
 
-Then we can have our implementations
-
+接著，我們繼續實作：
 ```php
 class AndroidBuilder extends Builder
 {
@@ -2271,8 +2270,8 @@ class IosBuilder extends Builder
     }
 }
 ```
-And then it can be used as
 
+接著，可以如下的方式使用：
 ```php
 $androidBuilder = new AndroidBuilder();
 $androidBuilder->build();
