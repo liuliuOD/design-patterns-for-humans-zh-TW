@@ -1774,20 +1774,21 @@ $editor->restore($saved);
 $editor->getContent(); // This is the first sentence. This is second.
 ```
 
-😎 Observer
+### 😎 觀察者模式 (Observer)
 --------
-Real world example
-> A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.   
 
-In plain words
-> Defines a dependency between objects so that whenever an object changes its state, all its dependents are notified.
+以現實生活為例：
+> 一個不錯的例子是，求職者訂閱某些求職網站，當有符合條件的工作機會發布時，他們就會收到通知。
 
-Wikipedia says
-> The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
+簡單來說：
+> `觀察者模式`定義了一種物件之間的依賴關係，因此當一個物件的狀態發生改變時，該物件的所有依賴者都會收到通知。
 
-**Programmatic example**
+**維基百科說：**
+> `觀察者模式`是一種軟體設計模式，一個`物件 (Subject)`維護一組它的`依賴者 (Observer)`名單，當有任何狀態改變時，透過呼叫這些依賴物件的方法來自動通知它們。
 
-Translating our example from above. First of all we have job seekers that need to be notified for a job posting
+**程式範例**
+
+以上面的求職者為例。首先，我們需要實作 `JobPost`, `JobSeeker` 類別，讓一個求職者在職缺發布時收到通知：
 ```php
 class JobPost
 {
@@ -1820,7 +1821,8 @@ class JobSeeker implements Observer
     }
 }
 ```
-Then we have our job postings to which the job seekers will subscribe
+
+然後，是求職者會訂閱的求職網站：
 ```php
 class EmploymentAgency implements Observable
 {
@@ -1844,7 +1846,8 @@ class EmploymentAgency implements Observable
     }
 }
 ```
-Then it can be used as
+
+接著，可以如下的方式使用：
 ```php
 // Create subscribers
 $johnDoe = new JobSeeker('John Doe');
