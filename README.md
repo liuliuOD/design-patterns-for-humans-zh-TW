@@ -1866,21 +1866,23 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 // Hi Jane Doe! New job posted: Software Engineer
 ```
 
-🏃 Visitor
+### 🏃 訪問者模式 (Visitor)
 -------
-Real world example
-> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern lets you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
 
-In plain words
-> Visitor pattern lets you add further operations to objects without having to modify them.
+以現實生活為例：
+> 假設有人到杜拜旅遊，他們需要一個方式（如：簽證）來進入杜拜。抵達後，他們不需要取得權限或任何複雜的步驟，就能夠在杜拜境內四處參觀。`訪問者模式`讓你做到相同的事情，它幫助你添加地點，這樣就能讓其他人隨意參觀而不需任何複雜步驟。
 
-Wikipedia says
-> In object-oriented programming and software engineering, the visitor design pattern is a way of separating an algorithm from an object structure on which it operates. A practical result of this separation is the ability to add new operations to existing object structures without modifying those structures. It is one way to follow the open/closed principle.
+簡單來說：
+> `訪問者模式`讓你在不修改物件的情況下，將操作加入其中。
 
-**Programmatic example**
+**維基百科說：**
+> 在`物件導向程式設計`和軟體工程中，`訪問者模式`是一個將演算法和操作的物件結構分開的方法。這種分開的一種實際結果，是能在現有的物件結構中加入新的操作，而不需要改變它們的結構。這是遵循`開閉原則 (open/closed principle)`的一種方式。
 
-Let's take an example of a zoo simulation where we have several different kinds of animals and we have to make them Sound. Let's translate this using visitor pattern
+**程式範例**
 
+讓我們舉一個動物園作為例子，這裡有許多不同種類的動物，而我們需要讓它們發出聲音：
+
+首先，定義 `Animal` (受訪者 visitee), `AnimalOperation` (訪問者 visitor) 介面：
 ```php
 // Visitee
 interface Animal
@@ -1896,7 +1898,8 @@ interface AnimalOperation
     public function visitDolphin(Dolphin $dolphin);
 }
 ```
-Then we have our implementations for the animals
+
+然後，來進行動物們的實作：
 ```php
 class Monkey implements Animal
 {
@@ -1937,7 +1940,8 @@ class Dolphin implements Animal
     }
 }
 ```
-Let's implement our visitor
+
+讓我們實作`訪問者 (visitor)`：
 ```php
 class Speak implements AnimalOperation
 {
@@ -1958,7 +1962,7 @@ class Speak implements AnimalOperation
 }
 ```
 
-And then it can be used as
+接著，可以如下的方式使用：
 ```php
 $monkey = new Monkey();
 $lion = new Lion();
@@ -1970,8 +1974,8 @@ $monkey->accept($speak);    // Ooh oo aa aa!
 $lion->accept($speak);      // Roaaar!
 $dolphin->accept($speak);   // Tuut tutt tuutt!
 ```
-We could have done this simply by having an inheritance hierarchy for the animals but then we would have to modify the animals whenever we would have to add new actions to animals. But now we will not have to change them. For example, let's say we are asked to add the jump behavior to the animals, we can simply add that by creating a new visitor i.e.
 
+我們也可以透過為動物創建繼承，來簡單實現上面的操作，但在未來想為動物加入新的操作時，就需要修改動物類別中的程式碼。但是只要使用`訪問者模式`，我們就不需要改變它們。例如：我們想要對動物增加`跳躍`的行為，可以很容易的透過增加一個新的`訪問者`來實現：
 ```php
 class Jump implements AnimalOperation
 {
@@ -1991,7 +1995,8 @@ class Jump implements AnimalOperation
     }
 }
 ```
-And for the usage
+
+使用方式則如下：
 ```php
 $jump = new Jump();
 
