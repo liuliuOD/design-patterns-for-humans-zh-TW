@@ -1616,24 +1616,22 @@ foreach($stationList as $station) {
 $stationList->removeStation(new RadioStation(89)); // Will remove station 89
 ```
 
-👽 Mediator
+### 👽 中介者模式 (Mediator)
 ========
 
-Real world example
-> A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator.
+以現實生活為例：
+> 一個常見的例子會是，當你和某個人用手機通話時，會有一個網路商介在你和對方之間，而你的對話會通過網路商傳送對方，而非直接送達。在這個情況下，網路商就是`中介者`。
 
-In plain words
-> Mediator pattern adds a third party object (called mediator) to control the interaction between two objects (called colleagues). It helps reduce the coupling between the classes communicating with each other. Because now they don't need to have the knowledge of each other's implementation.
+簡單來說：
+> `中介者模式`增加一個`第三方物件（中介者）`來控制兩個物件之間的互動。`中介者模式`有助於降低類別之間溝通的`耦合`程度。因為現在類別不需要知道彼此實作的細節。
 
-Wikipedia says
-> In software engineering, the mediator pattern defines an object that encapsulates how a set of objects interact. This pattern is considered to be a behavioral pattern due to the way it can alter the program's running behavior.
+**維基百科說：**
+> 在軟體工程中，`中介者模式`定義了一個物件，它`封裝`一組物件間的互動方式。由於這個模式能改變程式的執行行為，因此被視為是一種`行為型設計模式`。
 
-**Programmatic Example**
+**程式範例**
 
-Here is the simplest example of a chat room (i.e. mediator) with users (i.e. colleagues) sending messages to each other.
-
-First of all, we have the mediator i.e. the chat room
-
+這裡將以一個最簡單的聊天室作為範例，包含一個`聊天室 (中介者)`、一群互相傳送訊息的使用者。
+首先，我們來實作`聊天室`：
 ```php
 interface ChatRoomMediator 
 {
@@ -1653,7 +1651,7 @@ class ChatRoom implements ChatRoomMediator
 }
 ```
 
-Then we have our users i.e. colleagues
+接著，則是使用者：
 ```php
 class User {
     protected $name;
@@ -1673,7 +1671,8 @@ class User {
     }
 }
 ```
-And the usage
+
+接著，可以如下的方式使用：
 ```php
 $mediator = new ChatRoom();
 
