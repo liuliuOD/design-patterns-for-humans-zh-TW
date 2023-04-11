@@ -527,7 +527,7 @@ echo $cloned->getCategory(); // Mountain sheep
 **維基百科說：**
 > 在軟體工程中，`單例模式`是將一個類別的實例化，限制為同一個物件的軟體設計模式。尤其適用於需要`只有一個物件`來協調整個系統操作時。
 
-`單例模式`事實上被視為一個`反模式 (anti-pattern)`，應該避免過度使用它。它不一定是壞的，也有一些有效地使用案例，但應該被小心使用，因為其在你的應用中引入一個全域狀態，造成對單例進行改動時，可能意外的影響其他區塊，並帶來除錯上的困難。其它缺點則在於會讓程式`過度耦合 (coupled)`，讓`模擬 (mock)` 單例時遭遇困難。
+`單例模式`事實上被視為一個`反模式 (anti-pattern)`，應該避免過度使用它。它不一定是壞的，也有一些有效地使用案例，但應該被小心使用，因為其在你的應用中引入一個全域狀態，造成對單例進行改動時，可能意外的影響其他區塊，並帶來除錯上的困難。其它缺點則在於會讓程式過度`耦合`，讓`模擬 (mock)` 單例時遭遇困難。
 
 **程式範例**
 
@@ -687,7 +687,7 @@ $hunter->hunt($wildDogAdapter);
 > `橋接模式`是偏向於組合而非繼承的設計模式。它將實作的細節由一個階層式結構，推送到另一個具有獨立階層式結構的物件中。
 
 **維基百科說：**
-> `橋接模式`是一種軟體工程的設計模式，目的在「將`抽象 (abstract)`和實作`解耦合 (decouple)`，使兩者間可以獨立變化」。
+> `橋接模式`是一種軟體工程的設計模式，目的在「將`抽象 (abstract)`和實作`解耦合`，使兩者間可以獨立變化」。
 
 **程式範例**
 
@@ -1397,7 +1397,7 @@ $bank->pay(259);
 > 另一個例子是，你 (`Client`) 用遙控器 (`Invoker`) 打開 (`Command`) 電視 (`Receiver`)。
 
 簡單來說：
-> 允許你將行為封裝在物件中。`命令模式`背後的關鍵概念，在於提供從`使用者 (Client)`到`接收者 (Receiver)``解耦合 (decouple)`的方式。
+> 允許你將行為封裝在物件中。`命令模式`背後的關鍵概念，在於提供從`使用者 (Client)`到`接收者 (Receiver)``解耦合`的方式。
 
 **維基百科說：**
 > 在`物件導向程式 (OOP)`中，`命令模式`是一種`行為型設計模式`。其中一個物件被用於`封裝 (encapsulate)`執行操作，或是在之後觸發事件所需的所有資訊。這些資訊包含方法名稱、擁有該方法的物件和該方法參數的值。
@@ -1508,22 +1508,23 @@ $remote->submit($turnOff); // Darkness!
 
 `命令模式`也可以被用於實作一個基於事務的系統。你可以在執行命令時保持歷史紀錄。如果最終命令執行成功，則一切正常；否則只要迭代歷史紀錄，並在所有已執行的命令上執行 `undo` 即可。
 
-➿ Iterator
+### ➿ 迭代器模式 (Iterator)
 --------
 
-Real world example
-> An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio stations.  
+以現實生活為例：
+> 一台老式收音機是`迭代器模式`最好的例子，使用者可以從某個頻道開始，然後使用下一個或上一個的按鈕，來瀏覽相應的頻道。
+> 另一個例子是 MP3 播放器或是電視，你一樣可以使用下一個或上一個的按鈕，來瀏覽相應的頻道、音樂或電台，也就是說，它們都提供了一個介面，來瀏覽相應的頻道、音樂或電台。
 
-In plain words
-> It presents a way to access the elements of an object without exposing the underlying presentation.
+簡單來說：
+> `迭代器模式`提供一個方式來使用物件元素，而不需要暴露底層實現的細節。
 
-Wikipedia says
-> In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements. The iterator pattern decouples algorithms from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled.
+**維基百科說：**
+> 在`物件導向程式設計 (OOP)`中，`迭代器模式`是一種透過迭代器遍歷容器並使用其元素的設計模式。`迭代器模式`將容器和演算法`解耦合`；在某些案例中，演算法必須基於特定容器，因此無法被`解耦合`。
 
-**Programmatic example**
+**程式範例**
 
-In PHP it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
-
+要在 PHP 中實作`迭代器模式`非常簡單，只需要使用 `Standard PHP Library (SPL)` 即可。
+以我們上面的廣播電台為例。首先，實作一個 `RadioStation` 類別：
 ```php
 class RadioStation
 {
@@ -1540,8 +1541,8 @@ class RadioStation
     }
 }
 ```
-Then we have our iterator
 
+接著，實現`迭代器`：
 ```php
 use Countable;
 use Iterator;
@@ -1598,7 +1599,8 @@ class StationList implements Countable, Iterator
     }
 }
 ```
-And then it can be used as
+
+接著，可以如下的方式使用：
 ```php
 $stationList = new StationList();
 
