@@ -36,9 +36,9 @@
 
 # 設計模式的類型
 
-- [創建型 (Creational Design Patterns)](#創建型設計模式-creational-design-patterns)
-- [結構型 (Structural Design Patterns)](#結構型設計模式-structural-design-patterns)
-- [行為型 (Behavioral Design Patterns)](#行為型設計模式-behavioral-design-patterns)
+- [創建型設計模式 (Creational Design Patterns)](#創建型設計模式-creational-design-patterns)
+- [結構型設計模式 (Structural Design Patterns)](#結構型設計模式-structural-design-patterns)
+- [行為型設計模式 (Behavioral Design Patterns)](#行為型設計模式-behavioral-design-patterns)
 
 ## 創建型設計模式 (Creational Design Patterns)
 
