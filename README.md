@@ -15,6 +15,11 @@
 |方法|method|
 |函式、函數|function|
 |模擬|mock|
+|耦合|couple|
+|解耦合|decouple|
+|封裝|encapsulate|
+|客戶端|client|
+|物件導向程式設計|object-oriented programming (OOP)|
 
 # 介紹
 
