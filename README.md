@@ -21,6 +21,20 @@
 |客戶端|client|
 |物件導向程式設計|object-oriented programming (OOP)|
 
+# 查找表
+|[創建型設計模式 (Creational Design Patterns)](#創建型設計模式-creational-design-patterns)|[結構型設計模式 (Structural Design Patterns)](#結構型設計模式-structural-design-patterns)|[行為型設計模式 (Behavioral Design Patterns)](#行為型設計模式-behavioral-design-patterns)|
+|:-|:-|:-|
+|[簡單工廠模式 (Simple Factory)](#-簡單工廠模式-simple-factory)|[轉接器（適配器）模式 (Adapter)](#-轉接器（適配器）模式-adapter)|[責任鏈模式 (Chain of Responsibility)](#-責任鏈模式-chain-of-responsibility)|
+|[工廠方法模式 (Factory Method)](#-工廠方法模式-factory-method)|[橋接模式 (Bridge)](#-橋接模式-bridge)|[命令模式 (Command)](#-命令模式-command)|
+|[抽象工廠模式 (Abstract Factory)](#-抽象工廠模式-abstract-factory)|[組合模式 (Composite)](#-組合模式-composite)|[迭代器模式 (Iterator)](#-迭代器模式-iterator)|
+|[生成器（建造者）模式 (Builder)](#-生成器（建造者）模式-builder)|[裝飾器（裝飾者）模式 (Decorator)](#-裝飾器（裝飾者）模式-decorator)|[中介者模式 (Mediator)](#-中介者模式-mediator)|
+|[原型模式 (Prototype)](#-原型模式-prototype)|[外觀模式 (Facade)](#-外觀模式-facade)|[備忘錄模式 (Memento)](#-備忘錄模式-memento)|
+|[單例模式 (Singleton)](#-單例模式-singleton)|[輕量（享元）模式 (Flyweight)](#-輕量（享元）模式-flyweight)|[觀察者模式 (Observer)](#-觀察者模式-observer)|
+||[代理模式 (Proxy)](#-代理模式-proxy)|[訪問者模式 (Visitor)](#-訪問者模式-visitor)|
+|||[策略模式 (Strategy)](#-策略模式-strategy)|
+|||[狀態模式 (State)](#-狀態模式-state)|
+|||[模板方法模式 (Template Method)](#-模板方法模式-template-method)|
+
 # 介紹
 
 設計模式是對於頻繁出現的問題，所產生的解決方案。 **也是針對特定問題，該如何處理的準則。** 設計模式並非如函式庫、套件包等隨插即用的魔法工具；相反地，設計模式是對於特定情境下產生的特定問題，經過眾人嘗試各種解法後，概括出的準則。
